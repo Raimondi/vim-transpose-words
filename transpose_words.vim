@@ -15,9 +15,6 @@ function! TransposeWords(...) range
   endif
   let cur = searchpos(pat, 'wcne')
   exec 's/' . pat . '/\3\2\1/e'
-  echom 'cnt '.cnt
-  echom string(cur)
-  echom 'pattern: '.pat
   if cur[0]
     call cursor(cur[0], cur[1]+1)
   endif
