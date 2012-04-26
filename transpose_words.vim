@@ -23,5 +23,5 @@ function! TransposeWords(...) range
   endif
   let g:pattern = pat
 endfunction
-command! -bar -count=1 TransposeWords call TransposeWords()
+command! -bar -count=1 TransposeWords call TransposeWords(<count>)
 nnore gs :<C-U>call TransposeWords()<CR>
