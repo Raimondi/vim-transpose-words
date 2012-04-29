@@ -76,8 +76,13 @@ function! TransposeWords(...) range
     " There was a problem setting the line.
     return cursor(current)
   endif
+  " Make repeating with . possible.
+  " Do not re-attempt to use repeat#set() if not available.
+  if !exists('s:repeat') || s:repeat
+    silent! call repeat#set("\<Plug>TransposeWords", cnt)
+    let s:repeat = exists('*repeat#set')
+  endif
   " Place the cursor in front of the word.
-  silent! call repeat#set(':TransposeWords '.cnt."\<CR>")
   return !cursor(pos2[0], pos2[1] + len(pos1[0] == pos2[0] ? word2 : word1))
 endfunction
 
