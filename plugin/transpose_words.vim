@@ -77,6 +77,7 @@ function! TransposeWords(...) range
     return cursor(current)
   endif
   " Place the cursor in front of the word.
+  silent! call repeat#set(':TransposeWords '.cnt."\<CR>")
   return !cursor(pos2[0], pos2[1] + len(pos1[0] == pos2[0] ? word2 : word1))
 endfunction
 
