@@ -77,7 +77,7 @@ function! TransposeWords(...) range
     return cursor(current)
   endif
   " Place the cursor in front of the word.
-  return !cursor(pos2[0], pos2[1] + len(word1))
+  return !cursor(pos2[0], pos2[1] + (pos1[0] == pos2[0] ? len(word2) : len(word1)))
 endfunction
 
 " Maps: {{{1
